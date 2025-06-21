@@ -1,0 +1,8 @@
+{
+  "functions": {
+    "api/convert-prompt.js": {
+      "maxDuration": 10
+    }
+  },
+  "regions": ["iad1"]
+}
