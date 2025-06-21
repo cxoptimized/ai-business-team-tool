@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complete AI Business Team Tool - CX Optimized</title>
+    <title>Custom AI Prompts - Instant Access | CX Optimized</title>
     <style>
         * {
             margin: 0;
@@ -19,7 +19,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
             background: white;
             border-radius: 20px;
@@ -35,20 +35,316 @@
         }
 
         .header h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             margin-bottom: 10px;
             font-weight: 700;
         }
 
         .header p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             opacity: 0.9;
+        }
+
+        .progress-bar {
+            background: #f1f5f9;
+            padding: 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .progress-container {
+            background: #e2e8f0;
+            border-radius: 10px;
+            height: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #22c55e, #16a34a);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            margin-top: 10px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .wizard-step {
+            display: none;
+        }
+
+        .wizard-step.active {
+            display: block;
+        }
+
+        .step-title {
+            font-size: 1.8rem;
+            color: #1e293b;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .step-subtitle {
+            color: #64748b;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .option-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .option-card {
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .option-card:hover {
+            border-color: #22c55e;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(34, 197, 94, 0.1);
+        }
+
+        .option-card.selected {
+            border-color: #22c55e;
+            background: #f0f9ff;
+        }
+
+        .option-card h3 {
+            color: #1e293b;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .option-card p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .option-card .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #22c55e;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .technique-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .technique-card.selected {
+            border-color: #22c55e;
+            background: #f0fdf4;
+        }
+
+        .technique-card.premium {
+            border-color: #f59e0b;
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        }
+
+        .technique-card.premium.selected {
+            border-color: #22c55e;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        }
+
+        .technique-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .technique-name {
+            font-weight: 600;
+            color: #1e293b;
+            flex-grow: 1;
+        }
+
+        .technique-description {
+            color: #64748b;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .premium-badge {
+            background: #f59e0b;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .price-tag {
+            color: #22c55e;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-secondary {
+            background: #f8fafc;
+            color: #64748b;
+            border: 1px solid #e2e8f0;
+        }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .package-summary {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #1e293b;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #22c55e;
+        }
+
+        .addon-section {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .addon-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .addon-item:last-child {
+            border-bottom: none;
+        }
+
+        .checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Customer Portal Styles */
+        .portal-container {
+            display: none;
+        }
+
+        .portal-header {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 30px;
+        }
+
+        .welcome-message {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .portal-nav {
+            background: #f8fafc;
+            padding: 0;
+            border-bottom: 1px solid #e2e8f0;
         }
 
         .nav-tabs {
             display: flex;
-            background: #f8fafc;
-            border-bottom: 1px solid #e2e8f0;
             overflow-x: auto;
         }
 
@@ -57,7 +353,6 @@
             background: transparent;
             border: none;
             cursor: pointer;
-            white-space: nowrap;
             font-weight: 500;
             color: #64748b;
             border-bottom: 3px solid transparent;
@@ -75,211 +370,71 @@
             background: white;
         }
 
-        .content {
-            padding: 40px;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .quick-reference {
+        .prompt-library {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
-            margin-bottom: 40px;
+            margin-top: 20px;
         }
 
-        .role-card {
+        .prompt-item {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
             border-radius: 12px;
             padding: 20px;
+        }
+
+        .prompt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .prompt-title {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .copy-prompt-btn {
+            background: #22c55e;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
             cursor: pointer;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
         }
 
-        .role-card:hover {
-            background: #22c55e;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(34, 197, 94, 0.2);
+        .copy-prompt-btn:hover {
+            background: #16a34a;
         }
 
-        .role-card h3 {
-            color: #1e293b;
-            margin-bottom: 8px;
-            font-size: 1.1rem;
-        }
-
-        .role-card:hover h3 {
-            color: white;
-        }
-
-        .role-card p {
-            color: #64748b;
-            font-size: 0.9rem;
-        }
-
-        .role-card:hover p {
-            color: rgba(255,255,255,0.9);
-        }
-
-        .prompt-section {
-            background: #f8fafc;
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-
-        .prompt-section h2 {
-            color: #1e293b;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .role-badge {
-            background: #22c55e;
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .prompt-box {
+        .prompt-content {
             background: white;
             border: 1px solid #e2e8f0;
             border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        .prompt-label {
-            background: #22c55e;
-            color: white;
-            padding: 5px 12px;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            display: inline-block;
-        }
-
-        .prompt-text {
-            background: #f1f5f9;
-            border-radius: 6px;
             padding: 15px;
             font-family: 'Courier New', monospace;
             font-size: 0.9rem;
             line-height: 1.6;
-            white-space: pre-wrap;
-            max-height: 300px;
+            max-height: 200px;
             overflow-y: auto;
         }
 
-        .copy-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: #22c55e;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            padding: 8px 15px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .copy-btn:hover {
-            background: #16a34a;
-            transform: translateY(-1px);
-        }
-
-        .copy-btn.copied {
-            background: #059669;
-        }
-
-        .search-box {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            font-size: 1rem;
-            margin-bottom: 30px;
-            transition: border-color 0.3s ease;
-        }
-
-        .search-box:focus {
-            outline: none;
-            border-color: #22c55e;
-        }
-
-        .filter-buttons {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 8px 16px;
-            background: #f1f5f9;
-            border: 1px solid #e2e8f0;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .filter-btn:hover, .filter-btn.active {
-            background: #22c55e;
-            color: white;
-            border-color: #22c55e;
-        }
-
-        .intro-text {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .intro-text h2 {
-            color: #1e293b;
-            margin-bottom: 15px;
-        }
-
-        .intro-text p {
-            color: #64748b;
-            line-height: 1.6;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .stats {
+        .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
-            margin: 30px 0;
+            margin-bottom: 30px;
         }
 
         .stat-card {
             background: white;
+            border: 1px solid #e2e8f0;
             border-radius: 12px;
             padding: 20px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
         .stat-number {
@@ -296,642 +451,593 @@
         }
 
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
+            .option-grid {
+                grid-template-columns: 1fr;
             }
             
             .content {
                 padding: 20px;
             }
             
-            .nav-tabs {
-                justify-content: flex-start;
-            }
-            
-            .quick-reference {
-                grid-template-columns: 1fr;
+            .navigation {
+                flex-direction: column;
+                gap: 10px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <!-- Main Wizard Container -->
+    <div class="container" id="wizard-container">
         <div class="header">
-            <h1>Complete AI Business Team</h1>
-            <p>13 Expert AI Roles • 20+ Years Experience Each • Available 24/7</p>
+            <h1>Custom AI Prompts</h1>
+            <p>Get Instant Access to Professional AI Prompts Built for Your Business</p>
         </div>
 
-        <div class="nav-tabs">
-            <button class="nav-tab active" onclick="showTab('overview')">Overview</button>
-            <button class="nav-tab" onclick="showTab('quick-reference')">Quick Reference</button>
-            <button class="nav-tab" onclick="showTab('all-prompts')">All Prompts</button>
-            <button class="nav-tab" onclick="showTab('how-to-use')">How to Use</button>
-            <button class="nav-tab" onclick="showTab('prompt-education')">Prompt Mastery</button>
-            <button class="nav-tab" onclick="showTab('prompt-converter')">🔧 Prompt Converter</button>
-            <button class="nav-tab" onclick="showTab('custom-tools')">Custom Tools</button>
+        <div class="progress-bar">
+            <div class="progress-container">
+                <div class="progress-fill" id="progress-fill" style="width: 16.67%;"></div>
+            </div>
+            <div class="progress-text" id="progress-text">Step 1 of 6: Choose Your Approach</div>
         </div>
 
         <div class="content">
-            <!-- Overview Tab -->
-            <div id="overview" class="tab-content active">
-                <div class="intro-text">
-                    <h2>Transform Your Business with AI Experts</h2>
-                    <p>Get instant access to 13 professional AI roles that provide expert-level guidance across all aspects of your ecommerce business. From coding to marketing to customer experience - your complete AI team is ready to work.</p>
-                </div>
-
-                <div class="stats">
-                    <div class="stat-card">
-                        <span class="stat-number">13</span>
-                        <div class="stat-label">Expert AI Roles</div>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">20+</span>
-                        <div class="stat-label">Years Experience Each</div>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">24/7</span>
-                        <div class="stat-label">Availability</div>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">$600K+</span>
-                        <div class="stat-label">Annual Savings vs Staff</div>
-                    </div>
-                </div>
-
-                <div class="quick-reference">
-                    <div class="role-card" onclick="showPrompt('coder')">
-                        <h3>🔧 Coder AI</h3>
-                        <p>Step-by-step coding guidance for all your technical needs</p>
-                    </div>
-                    <div class="role-card" onclick="showPrompt('designer')">
-                        <h3>🎨 Designer AI</h3>
-                        <p>UI/UX design and conversion optimization expertise</p>
-                    </div>
-                    <div class="role-card" onclick="showPrompt('security')">
-                        <h3>🔒 Security & Debug Specialist</h3>
-                        <p>Security assessment and problem-solving guidance</p>
-                    </div>
-                    <div class="role-card" onclick="showPrompt('cx-auditor')">
-                        <h3>👥 CX Auditor AI</h3>
-                        <p>Customer experience review and optimization</p>
-                    </div>
-                    <div class="role-card" onclick="showPrompt('developer-reviewer')">
-                        <h3>✅ Developer Reviewer AI</h3>
-                        <p>Code quality and functionality assessment</p>
-                    </div>
-                    <div class="role-card" onclick="showPrompt('editor')">
-                        <h3>📝 Editor AI</h3>
-                        <p>Content and communication optimization</p>
-                    </div>
-                    <div class="role-card" onclick="showPrompt('potential-client')">
-                        <h3>🎯 Potential Client AI</h3>
-                        <p>User perspective testing and insights</p>
-                    </div>
-                    <div class="role-card" onclick="showPrompt('ai-system')">
-                        <h3>🤖 AI System Expert</h3>
-                        <p>AI implementation and optimization guidance</p>
-                    </div>
-                    <div class="role-card" onclick="showPrompt('prompt-expert')">
-                        <h3>💬 Prompt Expert</h3>
-                        <p>Prompt engineering and AI communication</p>
-                    </div>
-                    <div class="role-card" onclick="showPrompt('ceo')">
-                        <h3>👑 CEO AI</h3>
-                        <p>Strategic leadership and business decisions</p>
-                    </div>
-                    <div class="role-card" onclick="showPrompt('sales')">
-                        <h3>💰 Sales AI</h3>
-                        <p>Revenue optimization and sales strategy</p>
-                    </div>
-                    <div class="role-card" onclick="showPrompt('marketer')">
-                        <h3>📈 Marketer AI</h3>
-                        <p>Growth strategy and brand positioning</p>
-                    </div>
-                    <div class="role-card" onclick="showPrompt('agent-manager')">
-                        <h3>⚙️ AI Agent Manager</h3>
-                        <p>Coordinate and optimize your AI team</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Quick Reference Tab -->
-            <div id="quick-reference" class="tab-content">
-                <h2>Quick Role Selection Guide</h2>
-                <div class="filter-buttons">
-                    <button class="filter-btn active" onclick="filterRoles('all')">All Roles</button>
-                    <button class="filter-btn" onclick="filterRoles('development')">Development</button>
-                    <button class="filter-btn" onclick="filterRoles('review')">Review</button>
-                    <button class="filter-btn" onclick="filterRoles('leadership')">Leadership</button>
-                    <button class="filter-btn" onclick="filterRoles('technical')">Technical</button>
-                </div>
-
-                <div class="quick-reference" id="role-grid">
-                    <div class="role-card development">
-                        <h3>🔧 Coder AI</h3>
-                        <p>Step-by-step coding guidance - AI teaches you</p>
-                    </div>
-                    <div class="role-card development">
-                        <h3>🎨 Designer AI</h3>
-                        <p>UI/UX design expertise - You lead, AI follows</p>
-                    </div>
-                    <div class="role-card development">
-                        <h3>🔒 Security & Debug Specialist</h3>
-                        <p>Security assessment - AI teaches you</p>
-                    </div>
-                    <div class="role-card review">
-                        <h3>👥 CX Auditor AI</h3>
-                        <p>Customer experience - Both experts collaborate</p>
-                    </div>
-                    <div class="role-card review">
-                        <h3>✅ Developer Reviewer AI</h3>
-                        <p>Code quality review - AI teaches you</p>
-                    </div>
-                    <div class="role-card review">
-                        <h3>📝 Editor AI</h3>
-                        <p>Content optimization - AI teaches you</p>
-                    </div>
-                    <div class="role-card review">
-                        <h3>🎯 Potential Client AI</h3>
-                        <p>User testing - AI simulates users</p>
-                    </div>
-                    <div class="role-card technical">
-                        <h3>🤖 AI System Expert</h3>
-                        <p>AI implementation - AI teaches you</p>
-                    </div>
-                    <div class="role-card technical">
-                        <h3>💬 Prompt Expert</h3>
-                        <p>Prompt engineering - AI teaches you</p>
-                    </div>
-                    <div class="role-card leadership">
-                        <h3>👑 CEO AI</h3>
-                        <p>Strategic leadership - Both experts collaborate</p>
-                    </div>
-                    <div class="role-card leadership">
-                        <h3>💰 Sales AI</h3>
-                        <p>Revenue optimization - Both experts collaborate</p>
-                    </div>
-                    <div class="role-card leadership">
-                        <h3>📈 Marketer AI</h3>
-                        <p>Growth strategy - Both experts collaborate</p>
-                    </div>
-                    <div class="role-card technical">
-                        <h3>⚙️ AI Agent Manager</h3>
-                        <p>Team coordination - AI teaches you</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- All Prompts Tab -->
-            <div id="all-prompts" class="tab-content">
-                <input type="text" class="search-box" placeholder="Search prompts..." id="prompt-search" onkeyup="searchPrompts()">
+            <!-- Step 1: Package Selection -->
+            <div class="wizard-step active" id="step-1">
+                <h2 class="step-title">Choose Your Approach</h2>
+                <p class="step-subtitle">How would you like to create your custom prompt package?</p>
                 
-                <div id="prompts-container">
-                    <!-- CODER AI -->
-                    <div class="prompt-section" id="prompt-coder">
-                        <h2>🔧 Coder AI <span class="role-badge">AI teaches you</span></h2>
-                        
-                        <div class="prompt-box">
-                            <div class="prompt-label">Full Prompt</div>
-                            <button class="copy-btn" onclick="copyToClipboard('full-coder', this)">Copy</button>
-                            <div class="prompt-text" id="full-coder"># Coder AI - Complete Development Guide
-
-**You are an expert full-stack developer with over 20+ years experience in ecommerce platforms.**
-
-**Your Identity & Expertise:**
-- Specialize in Shopify, VS Code, GitHub, Vercel deployment, GoDaddy integration
-- Expert in Claude/OpenAI API integration and ecommerce automation
-- Focus on conversion-focused, secure, scalable solutions
-
-**Your Platforms/Tools:**
-- VS Code with extensions for your tech stack
-- GitHub for version control and collaboration
-- Vercel for web apps and static site deployment
-- Shopify for ecommerce functionality and apps
-- GoDaddy Website Builder for quick business sites
-- Freeforms and JotForm for data collection systems
-- Claude and OpenAI APIs for AI integration
-- Google services integration (Analytics, Maps, etc.)
-
-**Your Communication Rules:**
-- I'm NOT a coder, explain everything in simple business terms
-- Give only 2-3 steps at a time, wait for confirmation before continuing
-- Always ask before making any decisions, present options and let me choose
-- Never write code without explicit permission first (saves chat space)
-- Essay format responses, no bullet summaries or recaps
-- I am NOT in host mode - you control technical expertise, I control all business decisions
-
-**Your Process:**
-- Ask what business objective I want to accomplish first
-- Present 2-3 technical approach options and wait for my choice
-- Break chosen approach into phases, show me the roadmap
-- Start with Phase 1 only, give me specific steps
-- Wait for my feedback before moving to next steps
-- Never write code without showing me the plan first
-
-**Success Metrics:**
-- Code passes security reviews and works across all devices
-- Solutions increase conversion rates and reduce bounce rates
-- Clean, maintainable code that non-technical team can understand
-- Seamless integration between all platforms and systems
-
-**Goal**: Guide me through step-by-step coding for business-focused, secure ecommerce solutions that drive growth and customer satisfaction.</div>
-                        </div>
-
-                        <div class="prompt-box">
-                            <div class="prompt-label">Mini Prompt</div>
-                            <button class="copy-btn" onclick="copyToClipboard('mini-coder', this)">Copy</button>
-                            <div class="prompt-text" id="mini-coder">**You are an expert full-stack developer with 20+ years experience in ecommerce platforms. I'm NOT a coder, explain everything simply. Give 2-3 steps at a time, wait for confirmation. Ask before making decisions, present options. Never write code without explicit permission first. Essay format, no bullet summaries. I control all decisions. Guide me through coding step-by-step for secure ecommerce solutions.**</div>
+                <div class="option-grid">
+                    <div class="option-card" onclick="selectOption('approach', 'curated')">
+                        <div class="badge">Recommended</div>
+                        <h3>🎯 Expert-Curated Bundles</h3>
+                        <p>Our AI experts have created proven prompt combinations for specific business outcomes. Choose from tested packages that deliver results.</p>
+                        <div style="margin-top: 15px; color: #22c55e; font-weight: 600;">
+                            ✓ Faster setup<br>
+                            ✓ Proven combinations<br>
+                            ✓ Best value
                         </div>
                     </div>
-
-                    <!-- DESIGNER AI -->
-                    <div class="prompt-section" id="prompt-designer">
-                        <h2>🎨 Designer AI <span class="role-badge">You lead, AI follows</span></h2>
-                        
-                        <div class="prompt-box">
-                            <div class="prompt-label">Full Prompt</div>
-                            <button class="copy-btn" onclick="copyToClipboard('full-designer', this)">Copy</button>
-                            <div class="prompt-text" id="full-designer"># Designer AI - UI/UX Design Excellence
-
-**You are an expert UI/UX designer with over 20+ years experience specializing in ecommerce conversion design.**
-
-**Your Identity & Expertise:**
-- Master of conversion-focused design for Shopify and ecommerce platforms
-- Expert in mobile-first responsive design and user experience optimization
-- Specialist in GoDaddy sites, Freeforms/JotForm design, and AI interface design
-- Focus on designs that drive business results and customer satisfaction
-
-**Your Design Platforms:**
-- Shopify store design (product pages, checkout flow, mobile optimization)
-- GoDaddy Website Builder sites and landing pages
-- Freeforms and JotForm design for better completion rates
-- Vercel-deployed web applications and responsive design
-- AI system interfaces (Claude/OpenAI chat designs)
-- Cross-platform design consistency and integration
-
-**Your Communication Rules:**
-- I AM the design expert, follow my creative direction and vision
-- Give only 2-3 design concepts at a time, wait for my choice
-- Always ask which design areas to focus on first
-- Provide specific improvement suggestions with business impact explanation
-- Never create designs or mockups without explicit permission first
-- Essay format responses, no bullet summaries or recaps
-- I control all creative decisions - you implement my vision
-
-**Your Design Process:**
-- Ask what specific design challenge or goal I want to address
-- Present 2-3 design approach options and wait for my selection
-- Break complex design projects into phases, show me the creative roadmap
-- Begin with Phase 1 only, give specific design concepts
-- Wait for my feedback and creative direction before proceeding
-- Never create visual designs without showing me the strategy first
-
-**Success Metrics:**
-- Designs increase conversion rates and reduce bounce rates
-- Improved mobile usability scores and user engagement
-- Higher customer satisfaction and seamless user experience
-- Consistent brand presentation across all platforms
-
-**Goal**: Create conversion-focused, user-friendly designs that drive business results across all touchpoints while following your creative expertise and vision.</div>
-                        </div>
-
-                        <div class="prompt-box">
-                            <div class="prompt-label">Mini Prompt</div>
-                            <button class="copy-btn" onclick="copyToClipboard('mini-designer', this)">Copy</button>
-                            <div class="prompt-text" id="mini-designer">**You are an expert UI/UX designer with 20+ years experience in ecommerce conversion design. I AM the design expert, follow my creative direction. Give 2-3 design concepts at a time, wait for my choice. Ask which areas to focus on first. Provide specific improvement suggestions with business impact. Never create designs without permission first. Essay format, no bullet summaries. I control all decisions.**</div>
-                        </div>
-                    </div>
-
-                    <!-- Add more AI roles here following the same pattern -->
-                </div>
-            </div>
-
-            <!-- How to Use Tab -->
-            <div id="how-to-use" class="tab-content">
-                <div class="intro-text">
-                    <h2>How to Use Your AI Business Team</h2>
-                    <p>Get expert AI assistance in just 3 simple steps</p>
-                </div>
-
-                <div class="prompt-section">
-                    <h2>Step 1: Choose Your AI Role</h2>
-                    <p>Use the Quick Reference guide to select the AI expert you need based on your current challenge or goal.</p>
-                </div>
-
-                <div class="prompt-section">
-                    <h2>Step 2: Copy the Prompt</h2>
-                    <p>Copy either the full detailed prompt (for comprehensive guidance) or the mini prompt (for quick daily use).</p>
-                </div>
-
-                <div class="prompt-section">
-                    <h2>Step 3: Paste and Start Working</h2>
-                    <p>Paste the prompt into your AI platform (Claude, ChatGPT, etc.) and start collaborating with your expert AI assistant.</p>
-                </div>
-
-                <div class="prompt-section">
-                    <h2>Communication Standards</h2>
-                    <p>Every AI role follows these collaboration rules:</p>
-                    <ul style="margin-left: 20px; margin-top: 10px; color: #64748b;">
-                        <li>20+ years expertise in their field</li>
-                        <li>Give 2-3 recommendations at a time</li>
-                        <li>Ask permission before working</li>
-                        <li>Essay format responses (no bullet lists)</li>
-                        <li>You control all decisions</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Prompt Education Tab -->
-            <div id="prompt-education" class="tab-content">
-                <div class="intro-text">
-                    <h2>🎓 Master the Art of Prompt Engineering</h2>
-                    <p>Learn the science behind effective prompts and how to create AI interactions that deliver consistent, professional results for your business.</p>
-                </div>
-
-                <div class="prompt-section">
-                    <h2>🧠 What Makes a Good Prompt?</h2>
-                    <p>A good prompt is like a detailed job description for your AI. It should be clear, specific, and results-focused. The difference between amateur and professional AI results lies entirely in prompt quality.</p>
                     
-                    <div style="background: #f1f5f9; border-left: 4px solid #22c55e; padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0;">
-                        <strong>Professional Secret:</strong> The prompts in this tool took years to develop and test. Each one is engineered for maximum effectiveness and business results.
-                    </div>
-                </div>
-
-                <div class="prompt-section">
-                    <h2>⚙️ The CX Optimized Prompt Formula</h2>
-                    <p>Every effective business prompt follows this proven structure:</p>
-
-                    <div class="prompt-box">
-                        <div class="prompt-label">The Professional Prompt Template</div>
-                        <button class="copy-btn" onclick="copyToClipboard('prompt-template', this)">Copy Template</button>
-                        <div class="prompt-text" id="prompt-template"># [ROLE NAME] - [PURPOSE]
-
-**You are an expert [PROFESSION] with [X]+ years experience in [SPECIALIZATION].**
-
-**Your Identity & Expertise:**
-- [Specific background and credentials]
-- [Key areas of specialization]
-- [Business context and focus]
-
-**Your Platforms/Tools:**
-- [List of relevant platforms/technologies]
-- [Specific business systems you work with]
-
-**Your Communication Rules:**
-- [Expertise level relationship - who leads?]
-- [Response format requirements]
-- [Permission and collaboration guidelines]
-- [Specific behavioral constraints]
-- [Output format preferences]
-
-**Your Process:**
-- [How to approach tasks]
-- [What to ask before starting]
-- [How to break down complex work]
-
-**Success Metrics:**
-- [What defines success in this role]
-- [Business impact measurements]
-
-**Goal**: [Clear, specific objective for this AI role]</div>
+                    <div class="option-card" onclick="selectOption('approach', 'custom')">
+                        <h3>🛠️ Build Your Own</h3>
+                        <p>Select specific prompt techniques and customize everything to your exact needs. Perfect for unique business requirements.</p>
+                        <div style="margin-top: 15px; color: #64748b; font-weight: 600;">
+                            ✓ Complete control<br>
+                            ✓ Unique combinations<br>
+                            ✓ Advanced options
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Prompt Converter Tab -->
-            <div id="prompt-converter" class="tab-content">
-                <div class="intro-text">
-                    <h2>🔧 AI Prompt Converter</h2>
-                    <p>Transform your basic prompts into professional, high-performance prompts using our proven formula. See the difference expert prompt engineering makes!</p>
+            <!-- Step 2: Industry Selection -->
+            <div class="wizard-step" id="step-2">
+                <h2 class="step-title">What's Your Business Type?</h2>
+                <p class="step-subtitle">This helps us show you the most relevant techniques and examples</p>
+                
+                <div class="option-grid">
+                    <div class="option-card" onclick="selectOption('industry', 'ecommerce')">
+                        <h3>🛒 Ecommerce Store</h3>
+                        <p>Online retail, product sales, customer service</p>
+                    </div>
+                    <div class="option-card" onclick="selectOption('industry', 'saas')">
+                        <h3>💻 SaaS/Software</h3>
+                        <p>Software products, user onboarding, feature adoption</p>
+                    </div>
+                    <div class="option-card" onclick="selectOption('industry', 'agency')">
+                        <h3>📈 Marketing Agency</h3>
+                        <p>Client services, campaign creation, reporting</p>
+                    </div>
+                    <div class="option-card" onclick="selectOption('industry', 'consulting')">
+                        <h3>🎓 Consulting/Coaching</h3>
+                        <p>Expert advice, client analysis, strategic planning</p>
+                    </div>
+                    <div class="option-card" onclick="selectOption('industry', 'real-estate')">
+                        <h3>🏠 Real Estate</h3>
+                        <p>Property sales, client qualification, market analysis</p>
+                    </div>
+                    <div class="option-card" onclick="selectOption('industry', 'other')">
+                        <h3>🏢 Other Business</h3>
+                        <p>Healthcare, finance, education, or other industries</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Use Case Selection -->
+            <div class="wizard-step" id="step-3">
+                <h2 class="step-title">What's Your Primary Goal?</h2>
+                <p class="step-subtitle">Choose your main focus area for these custom prompts</p>
+                
+                <div class="option-grid" id="use-case-options">
+                    <!-- Dynamic content based on industry -->
+                </div>
+            </div>
+
+            <!-- Step 4: Technique Selection -->
+            <div class="wizard-step" id="step-4">
+                <h2 class="step-title">Select Your Prompt Techniques</h2>
+                <p class="step-subtitle">Choose the advanced techniques for your custom prompts</p>
+                
+                <div id="technique-selection">
+                    <!-- Basic Techniques -->
+                    <h3 style="color: #1e293b; margin-bottom: 15px;">✅ Included Techniques</h3>
+                    <div class="technique-card selected">
+                        <div class="technique-header">
+                            <span class="technique-name">Zero-Shot Prompting</span>
+                        </div>
+                        <div class="technique-description">Direct instructions without examples - perfect for straightforward tasks and quick responses.</div>
+                    </div>
+                    
+                    <div class="technique-card selected">
+                        <div class="technique-header">
+                            <span class="technique-name">Few-Shot Learning</span>
+                        </div>
+                        <div class="technique-description">Provide 2-3 examples to guide AI behavior and ensure consistent output quality.</div>
+                    </div>
+                    
+                    <div class="technique-card selected">
+                        <div class="technique-header">
+                            <span class="technique-name">Role Playing</span>
+                        </div>
+                        <div class="technique-description">AI assumes specific expert personas with defined characteristics and expertise levels.</div>
+                    </div>
+
+                    <!-- Recommended Add-ons -->
+                    <h3 style="color: #1e293b; margin: 30px 0 15px 0;">💡 Recommended Add-ons</h3>
+                    <div class="technique-card" onclick="toggleTechnique(this, 'chain-of-thought')">
+                        <div class="technique-header">
+                            <span class="technique-name">Chain of Thought</span>
+                            <span class="price-tag">+$25</span>
+                        </div>
+                        <div class="technique-description">AI shows step-by-step reasoning process, perfect for complex analysis and problem-solving.</div>
+                    </div>
+                    
+                    <div class="technique-card" onclick="toggleTechnique(this, 'iterative')">
+                        <div class="technique-header">
+                            <span class="technique-name">Iterative Prompting</span>
+                            <span class="price-tag">+$25</span>
+                        </div>
+                        <div class="technique-description">Multi-round prompting that builds on previous responses for comprehensive solutions.</div>
+                    </div>
+                    
+                    <div class="technique-card" onclick="toggleTechnique(this, 'directional')">
+                        <div class="technique-header">
+                            <span class="technique-name">Directional Stimulus</span>
+                            <span class="price-tag">+$25</span>
+                        </div>
+                        <div class="technique-description">Guide AI toward specific outcomes, perspectives, or decision-making frameworks.</div>
+                    </div>
+
+                    <!-- Premium Techniques -->
+                    <h3 style="color: #f59e0b; margin: 30px 0 15px 0;">🏆 Premium Techniques</h3>
+                    <div class="technique-card premium" onclick="toggleTechnique(this, 'react')">
+                        <div class="technique-header">
+                            <span class="technique-name">ReAct (Reasoning + Acting)</span>
+                            <span class="premium-badge">Premium</span>
+                            <span class="price-tag">+$50</span>
+                        </div>
+                        <div class="technique-description">AI explains logic then takes specific actions - ideal for complex business processes and workflows.</div>
+                    </div>
+                    
+                    <div class="technique-card premium" onclick="toggleTechnique(this, 'self-consistency')">
+                        <div class="technique-header">
+                            <span class="technique-name">Self-Consistency</span>
+                            <span class="premium-badge">Premium</span>
+                            <span class="price-tag">+$50</span>
+                        </div>
+                        <div class="technique-description">Multiple reasoning paths to verify accuracy and provide the most reliable answers.</div>
+                    </div>
+                    
+                    <div class="technique-card premium" onclick="toggleTechnique(this, 'prompt-chaining')">
+                        <div class="technique-header">
+                            <span class="technique-name">Prompt Chaining</span>
+                            <span class="premium-badge">Premium</span>
+                            <span class="price-tag">+$50</span>
+                        </div>
+                        <div class="technique-description">Sequential prompts that build complex workflows and multi-step business processes.</div>
+                    </div>
+                    
+                    <div class="technique-card premium" onclick="toggleTechnique(this, 'reflective')">
+                        <div class="technique-header">
+                            <span class="technique-name">Reflective Prompting</span>
+                            <span class="premium-badge">Premium</span>
+                            <span class="price-tag">+$50</span>
+                        </div>
+                        <div class="technique-description">AI analyzes and improves its own responses for continuous quality enhancement.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5: Package Summary -->
+            <div class="wizard-step" id="step-5">
+                <h2 class="step-title">Package Summary</h2>
+                <p class="step-subtitle">Review your custom prompt package before checkout</p>
+                
+                <div class="package-summary">
+                    <div class="summary-item">
+                        <span>Base Package (10 prompts):</span>
+                        <span>$397</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Extra Techniques:</span>
+                        <span id="addon-cost">$0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Total Prompts:</span>
+                        <span id="total-prompts">10</span>
+                    </div>
+                    <div class="summary-item">
+                        <span><strong>Total Price:</strong></span>
+                        <span><strong id="total-price">$397</strong></span>
+                    </div>
                 </div>
 
-                <div class="prompt-section">
-                    <h2>📝 Convert Your Prompt</h2>
-                    <p>Paste your current prompt below and watch it transform into a professional, results-driven prompt.</p>
+                <div id="selected-techniques">
+                    <h3 style="margin-bottom: 15px;">Your Selected Techniques:</h3>
+                    <div id="technique-list">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+            </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 25px;">
-                        <!-- Input Side -->
-                        <div>
-                            <h3 style="color: #ef4444; margin-bottom: 15px;">📥 Your Current Prompt</h3>
-                            <textarea 
-                                id="input-prompt" 
-                                placeholder="Paste your current prompt here... 
-
-Example: 'Help me with marketing for my online store'"
-                                style="width: 100%; height: 200px; padding: 15px; border: 2px solid #e2e8f0; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.9rem; line-height: 1.5; resize: vertical;"
-                                onkeyup="checkInputLength()"
-                            ></textarea>
-                            
-                            <div style="margin-top: 15px;">
-                                <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #1e293b;">Select Prompt Type:</label>
-                                <select id="prompt-type" style="width: 100%; padding: 10px; border: 2px solid #e2e8f0; border-radius: 6px; font-size: 0.9rem;">
-                                    <option value="business">Business/Strategy Role</option>
-                                    <option value="technical">Technical/Development Role</option>
-                                    <option value="creative">Creative/Design Role</option>
-                                    <option value="customer">Customer Service Role</option>
-                                    <option value="marketing">Marketing/Sales Role</option>
-                                    <option value="analysis">Analysis/Review Role</option>
-                                    <option value="general">General Purpose Role</option>
-                                </select>
+            <!-- Step 6: Checkout -->
+            <div class="wizard-step" id="step-6">
+                <h2 class="step-title">Complete Your Order</h2>
+                <p class="step-subtitle">Get instant access to your custom AI prompts</p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                    <div>
+                        <h3 style="margin-bottom: 20px;">Contact Information</h3>
+                        <div class="form-group">
+                            <label class="form-label">Full Name *</label>
+                            <input type="text" class="form-input" placeholder="John Smith" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email Address *</label>
+                            <input type="email" class="form-input" placeholder="john@company.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Company Name</label>
+                            <input type="text" class="form-input" placeholder="Your Company Inc.">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 style="margin-bottom: 20px;">Order Summary</h3>
+                        <div class="package-summary">
+                            <div class="summary-item">
+                                <span>Custom Prompt Package:</span>
+                                <span id="final-price">$397</span>
                             </div>
-
-                            <button 
-                                id="convert-btn"
-                                onclick="convertPrompt()" 
-                                style="width: 100%; margin-top: 20px; padding: 15px; background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;"
-                                disabled
-                            >
-                                🔧 Convert to Professional Prompt
-                            </button>
+                            <div class="summary-item">
+                                <span>Instant Access:</span>
+                                <span style="color: #22c55e;">✓ Included</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Customer Portal:</span>
+                                <span style="color: #22c55e;">✓ Lifetime Access</span>
+                            </div>
+                            <div class="summary-item">
+                                <span><strong>Total:</strong></span>
+                                <span><strong id="checkout-total">$397</strong></span>
+                            </div>
                         </div>
-
-                        <!-- Output Side -->
-                        <div>
-                            <h3 style="color: #22c55e; margin-bottom: 15px;">📤 Professional Version</h3>
-                            <div 
-                                id="output-prompt"
-                                style="width: 100%; height: 200px; padding: 15px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.9rem; line-height: 1.5; overflow-y: auto; white-space: pre-wrap;"
-                            >Your converted prompt will appear here...</div>
-                            
-                            <button 
-                                id="copy-converted-btn"
-                                onclick="copyConvertedPrompt()" 
-                                style="width: 100%; margin-top: 20px; padding: 15px; background: #64748b; color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: none;"
-                            >
-                                📋 Copy Professional Prompt
-                            </button>
-                        </div>
+                        
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 20px; padding: 15px;" onclick="processPayment()">
+                            🚀 Get Instant Access - Pay Now
+                        </button>
+                        
+                        <p style="text-align: center; margin-top: 15px; color: #64748b; font-size: 0.9rem;">
+                            Secure payment • Instant access • 30-day guarantee
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <!-- Custom Tools Tab -->
-            <div id="custom-tools" class="tab-content">
-                <div class="intro-text">
-                    <h2>🛠️ Need a Custom AI Tool for Your Business?</h2>
-                    <p>This AI Business Team Tool is just one example of what we can create for your specific business needs. Get your own custom AI-powered tools built by CX Optimized.</p>
+            <!-- Navigation -->
+            <div class="navigation">
+                <button class="btn btn-secondary" id="back-btn" onclick="previousStep()" style="display: none;">
+                    ← Back
+                </button>
+                <button class="btn btn-primary" id="next-btn" onclick="nextStep()" disabled>
+                    Next →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customer Portal (shown after purchase) -->
+    <div class="container portal-container" id="portal-container">
+        <div class="portal-header">
+            <h1 class="welcome-message">Welcome to Your AI Prompt Library</h1>
+            <p>Access your custom prompts anytime, anywhere. Built specifically for your business.</p>
+        </div>
+
+        <div class="portal-nav">
+            <div class="nav-tabs">
+                <button class="nav-tab active" onclick="showPortalTab('dashboard')">Dashboard</button>
+                <button class="nav-tab" onclick="showPortalTab('prompts')">My Prompts</button>
+                <button class="nav-tab" onclick="showPortalTab('analytics')">Usage Stats</button>
+                <button class="nav-tab" onclick="showPortalTab('upgrade')">Upgrade</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- Dashboard Tab -->
+            <div id="portal-dashboard" class="tab-content active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">12</span>
+                        <div class="stat-label">Total Prompts</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">47</span>
+                        <div class="stat-label">Times Used</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">5</span>
+                        <div class="stat-label">Favorites</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">Pro</span>
+                        <div class="stat-label">Package Type</div>
+                    </div>
                 </div>
 
-                <div class="stats">
-                    <div class="stat-card">
-                        <span class="stat-number">Custom</span>
-                        <div class="stat-label">AI Solutions</div>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">Tailored</span>
-                        <div class="stat-label">To Your Business</div>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">Professional</span>
-                        <div class="stat-label">Development</div>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">Full</span>
-                        <div class="stat-label">Support Included</div>
+                <h3 style="margin-bottom: 20px;">Quick Access - Most Used Prompts</h3>
+                <div class="prompt-library">
+                    <div class="prompt-item">
+                        <div class="prompt-header">
+                            <span class="prompt-title">Customer Service Expert (Chain of Thought)</span>
+                            <button class="copy-prompt-btn" onclick="copyPrompt('cs-expert')">Copy Prompt</button>
+                        </div>
+                        <div class="prompt-content" id="cs-expert">**You are an expert customer service specialist with 20+ years experience in ecommerce support...**</div>
                     </div>
                 </div>
+            </div>
 
-                <div style="background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); border-radius: 12px; padding: 30px; margin-top: 30px; text-align: center; color: white;">
-                    <h2 style="color: white; margin-bottom: 15px;">Ready to Build Your Custom AI Tool?</h2>
-                    <p style="margin-bottom: 20px; opacity: 0.9;">Let's discuss your specific needs and create an AI solution that gives your business a competitive advantage.</p>
-                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                        <a href="mailto:support@cxoptimized.com" style="background: rgba(255,255,255,0.2); color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: 600; border: 2px solid rgba(255,255,255,0.3);">📧 Email Us</a>
-                        <a href="https://calendly.com/cxoptimized/30min" target="_blank" style="background: rgba(255,255,255,0.2); color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: 600; border: 2px solid rgba(255,255,255,0.3);">🗓️ Schedule Call</a>
-                    </div>
+            <!-- My Prompts Tab -->
+            <div id="portal-prompts" class="tab-content" style="display: none;">
+                <h3 style="margin-bottom: 20px;">Your Complete Prompt Library</h3>
+                <div class="prompt-library">
+                    <!-- Full prompt library would be populated here -->
                 </div>
+            </div>
+
+            <!-- Analytics Tab -->
+            <div id="portal-analytics" class="tab-content" style="display: none;">
+                <h3 style="margin-bottom: 20px;">Usage Analytics</h3>
+                <p>Track which prompts work best for your business and optimize your AI usage.</p>
+            </div>
+
+            <!-- Upgrade Tab -->
+            <div id="portal-upgrade" class="tab-content" style="display: none;">
+                <h3 style="margin-bottom: 20px;">Upgrade Your Package</h3>
+                <p>Add more prompts and unlock premium techniques for enhanced AI capabilities.</p>
             </div>
         </div>
     </div>
 
     <script>
-        function showTab(tabId) {
-            // Hide all tab contents
-            const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => tab.classList.remove('active'));
+        let currentStep = 1;
+        let selections = {};
+        let selectedTechniques = ['zero-shot', 'few-shot', 'role-playing'];
+        let basePrice = 397;
+        let addonCost = 0;
 
-            // Remove active class from all nav tabs
-            const navTabs = document.querySelectorAll('.nav-tab');
-            navTabs.forEach(tab => tab.classList.remove('active'));
-
-            // Show selected tab
-            document.getElementById(tabId).classList.add('active');
-            event.target.classList.add('active');
-        }
-
-        function showPrompt(roleId) {
-            showTab('all-prompts');
-            setTimeout(() => {
-                const promptElement = document.getElementById(`prompt-${roleId}`);
-                if (promptElement) {
-                    promptElement.scrollIntoView({ behavior: 'smooth' });
-                }
-            }, 100);
-        }
-
-        function filterRoles(category) {
-            const cards = document.querySelectorAll('#role-grid .role-card');
-            const buttons = document.querySelectorAll('.filter-btn');
-            
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            cards.forEach(card => {
-                if (category === 'all' || card.classList.contains(category)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
+        function selectOption(category, value) {
+            // Remove active class from all cards in this step
+            document.querySelectorAll(`#step-${currentStep} .option-card`).forEach(card => {
+                card.classList.remove('selected');
             });
-        }
-
-        function searchPrompts() {
-            const searchTerm = document.getElementById('prompt-search').value.toLowerCase();
-            const prompts = document.querySelectorAll('#prompts-container .prompt-section');
             
-            prompts.forEach(prompt => {
-                const text = prompt.textContent.toLowerCase();
-                if (text.includes(searchTerm)) {
-                    prompt.style.display = 'block';
-                } else {
-                    prompt.style.display = 'none';
-                }
-            });
-        }
-
-        function copyToClipboard(elementId, button) {
-            const text = document.getElementById(elementId).textContent;
-            navigator.clipboard.writeText(text).then(() => {
-                button.textContent = 'Copied!';
-                button.classList.add('copied');
-                setTimeout(() => {
-                    button.textContent = 'Copy';
-                    button.classList.remove('copied');
-                }, 2000);
-            });
-        }
-
-        function checkInputLength() {
-            const input = document.getElementById('input-prompt').value.trim();
-            const convertBtn = document.getElementById('convert-btn');
+            // Add active class to selected card
+            event.target.closest('.option-card').classList.add('selected');
             
-            if (input.length > 10) {
-                convertBtn.disabled = false;
-                convertBtn.style.opacity = '1';
+            // Store selection
+            selections[category] = value;
+            
+            // Enable next button
+            document.getElementById('next-btn').disabled = false;
+            
+            // Update use cases based on industry selection
+            if (category === 'industry') {
+                updateUseCases(value);
+            }
+        }
+
+        function updateUseCases(industry) {
+            const useCases = {
+                'ecommerce': [
+                    { value: 'customer-service', title: '🎧 Customer Service', desc: 'Support tickets, returns, product questions' },
+                    { value: 'product-content', title: '📝 Product Content', desc: 'Descriptions, reviews, SEO optimization' },
+                    { value: 'sales-conversion', title: '💰 Sales & Conversion', desc: 'Email marketing, abandoned cart, upselling' },
+                    { value: 'operations', title: '⚙️ Operations', desc: 'Inventory, fulfillment, vendor management' }
+                ],
+                'saas': [
+                    { value: 'user-onboarding', title: '🚀 User Onboarding', desc: 'Feature adoption, tutorials, success metrics' },
+                    { value: 'customer-success', title: '✅ Customer Success', desc: 'Retention, expansion, satisfaction' },
+                    { value: 'product-development', title: '🛠️ Product Development', desc: 'Feature planning, user feedback, roadmaps' },
+                    { value: 'technical-support', title: '🔧 Technical Support', desc: 'Bug reports, troubleshooting, documentation' }
+                ],
+                'agency': [
+                    { value: 'client-management', title: '👥 Client Management', desc: 'Communication, reporting, relationship building' },
+                    { value: 'campaign-creation', title: '📈 Campaign Creation', desc: 'Strategy, content, optimization' },
+                    { value: 'performance-analysis', title: '📊 Performance Analysis', desc: 'Reporting, insights, recommendations' },
+                    { value: 'business-development', title: '🎯 Business Development', desc: 'Lead generation, proposals, growth' }
+                ]
+            };
+
+            const options = useCases[industry] || useCases['ecommerce'];
+            const container = document.getElementById('use-case-options');
+            
+            container.innerHTML = options.map(option => `
+                <div class="option-card" onclick="selectOption('usecase', '${option.value}')">
+                    <h3>${option.title}</h3>
+                    <p>${option.desc}</p>
+                </div>
+            `).join('');
+        }
+
+        function toggleTechnique(element, techniqueId) {
+            element.classList.toggle('selected');
+            
+            if (element.classList.contains('selected')) {
+                selectedTechniques.push(techniqueId);
             } else {
-                convertBtn.disabled = true;
-                convertBtn.style.opacity = '0.5';
+                selectedTechniques = selectedTechniques.filter(id => id !== techniqueId);
+            }
+            
+            updatePricing();
+        }
+
+        function updatePricing() {
+            const premiumTechniques = selectedTechniques.filter(t => 
+                ['react', 'self-consistency', 'prompt-chaining', 'reflective'].includes(t)
+            ).length;
+            
+            const standardAddons = selectedTechniques.filter(t => 
+                ['chain-of-thought', 'iterative', 'directional'].includes(t)
+            ).length;
+            
+            addonCost = (standardAddons * 25) + (premiumTechniques * 50);
+            const totalPrice = basePrice + addonCost;
+            
+            document.getElementById('addon-cost').textContent = `$${addonCost}`;
+            document.getElementById('total-prompts').textContent = 10 + selectedTechniques.length - 3;
+            document.getElementById('total-price').textContent = `$${totalPrice}`;
+        }
+
+        function nextStep() {
+            if (currentStep < 6) {
+                document.getElementById(`step-${currentStep}`).classList.remove('active');
+                currentStep++;
+                document.getElementById(`step-${currentStep}`).classList.add('active');
+                
+                // Update progress
+                const progress = (currentStep / 6) * 100;
+                document.getElementById('progress-fill').style.width = `${progress}%`;
+                document.getElementById('progress-text').textContent = `Step ${currentStep} of 6: ${getStepTitle(currentStep)}`;
+                
+                // Show/hide navigation buttons
+                document.getElementById('back-btn').style.display = currentStep > 1 ? 'block' : 'none';
+                document.getElementById('next-btn').disabled = true;
+                
+                // Special handling for step 5 (summary)
+                if (currentStep === 5) {
+                    updateSummary();
+                    document.getElementById('next-btn').disabled = false;
+                }
+                
+                // Hide next button on final step
+                if (currentStep === 6) {
+                    document.getElementById('next-btn').style.display = 'none';
+                    updateCheckout();
+                }
             }
         }
 
-        async function convertPrompt() {
-            const inputPrompt = document.getElementById('input-prompt').value.trim();
-            const promptType = document.getElementById('prompt-type').value;
-            const convertBtn = document.getElementById('convert-btn');
-            const outputDiv = document.getElementById('output-prompt');
-            const copyBtn = document.getElementById('copy-converted-btn');
-
-            if (!inputPrompt) {
-                alert('Please enter a prompt to convert!');
-                return;
-            }
-
-            convertBtn.textContent = '🔄 Converting...';
-            convertBtn.disabled = true;
-            outputDiv.textContent = 'Converting your prompt to professional standard...';
-
-            try {
-                const response = await fetch('/api/convert-prompt', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ prompt: inputPrompt, type: promptType })
-                });
-
-                const data = await response.json();
-                outputDiv.textContent = data.convertedPrompt;
-                copyBtn.style.display = 'block';
-
-            } catch (error) {
-                outputDiv.textContent = 'Error converting prompt. Please try again or contact support.';
-                console.error('Conversion error:', error);
-            } finally {
-                convertBtn.textContent = '🔧 Convert to Professional Prompt';
-                convertBtn.disabled = false;
+        function previousStep() {
+            if (currentStep > 1) {
+                document.getElementById(`step-${currentStep}`).classList.remove('active');
+                currentStep--;
+                document.getElementById(`step-${currentStep}`).classList.add('active');
+                
+                // Update progress
+                const progress = (currentStep / 6) * 100;
+                document.getElementById('progress-fill').style.width = `${progress}%`;
+                document.getElementById('progress-text').textContent = `Step ${currentStep} of 6: ${getStepTitle(currentStep)}`;
+                
+                // Show/hide navigation buttons
+                document.getElementById('back-btn').style.display = currentStep > 1 ? 'block' : 'none';
+                document.getElementById('next-btn').style.display = 'block';
+                document.getElementById('next-btn').disabled = false;
             }
         }
 
-        function copyConvertedPrompt() {
-            const convertedText = document.getElementById('output-prompt').textContent;
-            navigator.clipboard.writeText(convertedText).then(() => {
-                const button = document.getElementById('copy-converted-btn');
-                const originalText = button.textContent;
-                button.textContent = '✅ Copied!';
-                button.style.background = '#22c55e';
+        function getStepTitle(step) {
+            const titles = {
+                1: 'Choose Your Approach',
+                2: 'Business Type',
+                3: 'Primary Goal',
+                4: 'Select Techniques',
+                5: 'Package Summary',
+                6: 'Complete Order'
+            };
+            return titles[step];
+        }
+
+        function updateSummary() {
+            updatePricing();
+            
+            const techniqueList = document.getElementById('technique-list');
+            const techniques = {
+                'zero-shot': 'Zero-Shot Prompting',
+                'few-shot': 'Few-Shot Learning', 
+                'role-playing': 'Role Playing',
+                'chain-of-thought': 'Chain of Thought (+$25)',
+                'iterative': 'Iterative Prompting (+$25)',
+                'directional': 'Directional Stimulus (+$25)',
+                'react': 'ReAct - Reasoning + Acting (+$50)',
+                'self-consistency': 'Self-Consistency (+$50)',
+                'prompt-chaining': 'Prompt Chaining (+$50)',
+                'reflective': 'Reflective Prompting (+$50)'
+            };
+            
+            techniqueList.innerHTML = selectedTechniques.map(id => 
+                `<div style="padding: 8px 0; color: #64748b;">✓ ${techniques[id] || id}</div>`
+            ).join('');
+        }
+
+        function updateCheckout() {
+            const totalPrice = basePrice + addonCost;
+            document.getElementById('final-price').textContent = `$${totalPrice}`;
+            document.getElementById('checkout-total').textContent = `$${totalPrice}`;
+        }
+
+        function processPayment() {
+            // Here you would integrate with your GoDaddy shop payment processing
+            alert('Redirecting to secure payment...\n\nIn production, this would:\n1. Redirect to GoDaddy checkout\n2. Process payment\n3. Create customer account\n4. Grant access to portal');
+            
+            // Simulate successful payment and show portal
+            setTimeout(() => {
+                document.getElementById('wizard-container').style.display = 'none';
+                document.getElementById('portal-container').style.display = 'block';
+            }, 2000);
+        }
+
+        function showPortalTab(tabId) {
+            // Hide all portal tabs
+            document.querySelectorAll('#portal-container .tab-content').forEach(tab => {
+                tab.style.display = 'none';
+            });
+            
+            // Remove active class from nav tabs
+            document.querySelectorAll('#portal-container .nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(`portal-${tabId}`).style.display = 'block';
+            event.target.classList.add('active');
+        }
+
+        function copyPrompt(promptId) {
+            const promptText = document.getElementById(promptId).textContent;
+            navigator.clipboard.writeText(promptText).then(() => {
+                event.target.textContent = 'Copied!';
                 setTimeout(() => {
-                    button.textContent = originalText;
-                    button.style.background = '#64748b';
+                    event.target.textContent = 'Copy Prompt';
                 }, 2000);
             });
         }
+
+        // Initialize the wizard
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up initial state
+            updateUseCases('ecommerce'); // Default use cases
+        });
     </script>
 </body>
 </html>
